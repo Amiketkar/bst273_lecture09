@@ -20,7 +20,16 @@ print(args)
 """print(args.get(data_file))- on;y works with dictionary"""
 print(args.data_file) # to check we are on correct files
 
+fh = open(args.data_file)# we woudnt be able to read in data otherwise hence we assign the handle
+print("the file handle is ", fh)
 
+#initialize the variables
+lines = 0
+words = 0
+chars = 0
+
+for line in fh:
+	print(line)
 #-------------------------------------------------------------------------------
 # our code for analyzing the data
 #-------------------------------------------------------------------------------
