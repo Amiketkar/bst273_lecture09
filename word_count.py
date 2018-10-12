@@ -13,25 +13,27 @@ QUESTION 1:
 
 What is the output of the `git branch` command?
 ----------
-<paste answer here>
+$git branch
+* akclass
+  master
 ----------
 
 How can you tell which branch you're on?
 ----------
-<type answer here>
+"*" tells us where we are
 ----------
 
 QUESTION 2:
 
 ----------
-$ <enter command here>
-<enter output here>
+$ git remote get-url --all  origin
+https://github.com/Amiketkar/bst273_lecture09.git
 ----------
 
 QUESTION 3:
 
 ----------
-$ git remote add <What goes here?>
+$ git remote add kevin https://github.com/kescobo/bst273_lecture09.git
 ----------
 
 """
@@ -44,7 +46,12 @@ parser.add_argument(
 	"data_file",
 	help="path to the file we want to read",
 )
-
+parser.add_argument("-l","--line",action="store_true"
+)
+parser.add_argument("-w","--word", action="store_true"
+)
+parser.add_argument("-c","--char", action="store_true"
+)
 #-------------------------------------------------------------------------------
 # Are there other arguments we need?
 #-------------------------------------------------------------------------------
@@ -59,6 +66,17 @@ chars = 0
 
 for line in fh:
 	lines += 1
+	words = words + len(line.split())
+	chars = chars + len(line)
+
+if args.line:
+    print(lines)
+if args.word:
+    print(words)
+if args.char:
+    print(chars)
+if not (args.line or args.word or args.char):
+	print(lines, words, chars)
 
 	# ## Question 4a (2 pts)
 	#
@@ -135,7 +153,3 @@ for line in fh:
 	#
 	# **Hint:** - even though this question is at the end of the homework script,
 	# you probably need to add some stuff to the beginning of the script too.
-
-
-
-print("   ", lines)
